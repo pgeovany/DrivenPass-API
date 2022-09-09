@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import httpStatus from '../utils/httpStatus';
 import { UserInsertData } from '../repositories/userRepository';
+import * as authService from '../services/authService';
 import * as userService from '../services/userService';
 
 async function signUp(req: Request, res: Response) {
@@ -14,7 +15,7 @@ async function signUp(req: Request, res: Response) {
 async function signIn(req: Request, res: Response) {
   const user: UserInsertData = req.body;
 
-  const token = await userService.signIn(user);
+  const token = await authService.signIn(user);
 
   res.status(httpStatus.OK).send(token);
 }
