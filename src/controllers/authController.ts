@@ -17,7 +17,7 @@ async function signIn(req: Request, res: Response) {
 
   const token = await authService.signIn(user);
 
-  res.status(httpStatus.OK).send(token);
+  res.status(httpStatus.OK).send({ token });
 }
 
 export { signUp, signIn };
