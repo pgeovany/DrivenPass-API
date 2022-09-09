@@ -1,24 +1,24 @@
 import { NextFunction, Request, Response } from 'express';
 import httpStatus from '../utils/httpStatus';
 
+export interface CustomError {
+  type: string;
+  message: string;
+}
+
 function errorHandler(
-  error: any,
+  error: CustomError,
   req: Request,
   res: Response,
   next: NextFunction
 ) {
-  switch (error.type) {
-    case 'error_bad_request':
-      return res.status(httpStatus.BAD_REQUEST).send(error.message);
-    case 'error_unauthorized':
-      return res.status(httpStatus.UNAUTHORIZED).send(error.message);
-    case 'error_not_found':
-      return res.status(httpStatus.NOT_FOUND).send(error.message);
-    case 'error_conflict':
-      return res.status(httpStatus.CONFLICT).send(error.message);
-    default:
-      return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
+  const errorType = httpStatus[error.type];
+
+  if (errorType) {
+    return res.status(errorType).send(error.message);
   }
+
+  res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
 }
 
 export default errorHandler;
