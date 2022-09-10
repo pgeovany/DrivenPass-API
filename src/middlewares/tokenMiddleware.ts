@@ -17,6 +17,7 @@ async function tokenMiddleware(
   }
 
   const { JWT_SECRET } = process.env;
+
   jwt.verify(token, JWT_SECRET, (err, decoded: jwt.JwtPayload) => {
     if (err) {
       throw {
@@ -24,6 +25,7 @@ async function tokenMiddleware(
         message: 'Invalid token!',
       };
     }
+
     res.locals = {
       id: decoded.id,
     };

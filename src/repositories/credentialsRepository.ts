@@ -8,8 +8,8 @@ async function create(data: CredentialsInsertData) {
   await prisma.credentials.create({ data });
 }
 
-async function findById(id: number) {
-  return await prisma.credentials.findUnique({ where: { id } });
+async function findById(id: number, userId: number) {
+  return await prisma.credentials.findFirst({ where: { id, userId } });
 }
 
 async function findByUserIdAndTitle(userId: number, title: string) {

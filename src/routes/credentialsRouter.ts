@@ -1,5 +1,8 @@
 import { Router } from 'express';
-import { saveCredentials } from '../controllers/credentialsController';
+import {
+  getCredential,
+  saveCredentials,
+} from '../controllers/credentialsController';
 import tokenMiddleware from '../middlewares/tokenMiddleware';
 import validateSchema from '../middlewares/schemaValidator';
 import { credentialSchema } from '../utils/schemas';
@@ -7,10 +10,12 @@ import { credentialSchema } from '../utils/schemas';
 const credentialsRouter = Router();
 
 credentialsRouter.post(
-  '/credential',
+  '/credentials',
   tokenMiddleware,
   validateSchema(credentialSchema),
   saveCredentials
 );
+
+credentialsRouter.get('/credentials/:id', tokenMiddleware, getCredential);
 
 export default credentialsRouter;
