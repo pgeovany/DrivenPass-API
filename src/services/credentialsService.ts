@@ -34,6 +34,20 @@ async function getCredentialsById(id: number, userId: number) {
   return decryptCredentials(credentials);
 }
 
+async function getAllCredentials(userId: number) {
+  const credentials = await credentialsRepository.findByUserId(userId);
+  return decryptCredentialsArray(credentials);
+}
+
+function decryptCredentialsArray(credentials: Credentials[]) {
+  return credentials.map((credentials) => {
+    return {
+      ...credentials,
+      password: cryptr.decrypt(credentials.password),
+    };
+  });
+}
+
 function decryptCredentials(credentials: Credentials) {
   return {
     ...credentials,
@@ -50,4 +64,4 @@ function encryptCredentials(
   };
 }
 
-export { insertCredentials, getCredentialsById };
+export { insertCredentials, getCredentialsById, getAllCredentials };

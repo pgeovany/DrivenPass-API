@@ -24,4 +24,12 @@ async function getCredential(req: Request, res: Response) {
   res.status(httpStatus.OK).send(credentials);
 }
 
-export { saveCredentials, getCredential };
+async function getAllCredentials(req: Request, res: Response) {
+  const { id: userId } = res.locals;
+
+  const credentials = await credentialService.getAllCredentials(Number(userId));
+
+  res.status(httpStatus.OK).send(credentials);
+}
+
+export { saveCredentials, getCredential, getAllCredentials };

@@ -45,3 +45,39 @@ sending a body in the format:
 ```
 
 and an **Authorization header** in the Bearer TOKEN format.
+
+#### **GET** - List all credentials of a given user
+
+In order to get a list of credentials, make a get request to: localhost:5000/credentials
+sending an **Authorization header** in the Bearer TOKEN format.<br><br>
+The server will respond with an array in the format:
+
+```
+[
+  {
+    id: number,
+    userId: number,
+    title: string,
+    url: string,
+    username: string,
+    password: string
+  },
+]
+```
+
+#### **GET** - List specific credentials
+
+In order to get a specific cretential, make a get request to: localhost:5000/credentials/:id
+sending the **credential id** as a request param and an **Authorization header** in the Bearer TOKEN format.<br><br>
+The server will respond with an array in the format:
+
+```
+{
+  id: number,
+  userId: number,
+  title: string,
+  url: string,
+  username: string,
+  password: string
+}
+```

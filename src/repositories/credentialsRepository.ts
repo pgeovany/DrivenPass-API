@@ -12,6 +12,10 @@ async function findById(id: number, userId: number) {
   return await prisma.credentials.findFirst({ where: { id, userId } });
 }
 
+async function findByUserId(userId: number) {
+  return await prisma.credentials.findMany({ where: { userId } });
+}
+
 async function findByUserIdAndTitle(userId: number, title: string) {
   return await prisma.credentials.findUnique({
     where: {
@@ -23,4 +27,4 @@ async function findByUserIdAndTitle(userId: number, title: string) {
   });
 }
 
-export { create, findById, findByUserIdAndTitle };
+export { create, findById, findByUserId, findByUserIdAndTitle };

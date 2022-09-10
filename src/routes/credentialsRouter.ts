@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import {
+  getAllCredentials,
   getCredential,
   saveCredentials,
 } from '../controllers/credentialsController';
@@ -16,6 +17,7 @@ credentialsRouter.post(
   saveCredentials
 );
 
+credentialsRouter.get('/credentials', tokenMiddleware, getAllCredentials);
 credentialsRouter.get('/credentials/:id', tokenMiddleware, getCredential);
 
 export default credentialsRouter;
