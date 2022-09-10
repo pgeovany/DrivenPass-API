@@ -155,3 +155,20 @@ The server will respond with an object in the format:
 
 In order to delete a note, make a delete request to: localhost:5000/notes/:id
 sending an **Authorization header** in the Bearer TOKEN format.<br><br>
+
+## Wi-fi
+
+#### **POST** - Save wi-fi
+
+In order to save a wi-fi network, make a post request to: localhost:5000/wifis
+sending a body in the format:
+
+```
+{
+  title: string,
+  name: string,
+  password: string
+}
+```
+
+and an **Authorization header** in the Bearer TOKEN format.<br><br>
