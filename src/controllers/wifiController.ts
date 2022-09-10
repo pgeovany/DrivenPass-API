@@ -33,6 +33,8 @@ async function deleteWifi(req: Request, res: Response) {
   const { id } = req.params;
   const { userId } = res.locals;
 
+  await wifiService.deleteWifi(Number(id), Number(userId));
+
   res.sendStatus(httpStatus.OK);
 }
 

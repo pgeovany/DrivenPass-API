@@ -97,7 +97,7 @@ The server will respond with an object in the format:
 #### **DELETE** - Delete credentials
 
 In order to delete credentials, make a delete request to: localhost:5000/credentials/:id
-sending an **Authorization header** in the Bearer TOKEN format.<br><br>
+sending the **credential id** as a request param and an **Authorization header** in the Bearer TOKEN format.<br><br>
 
 ## Notes
 
@@ -154,7 +154,7 @@ The server will respond with an object in the format:
 #### **DELETE** - Delete note
 
 In order to delete a note, make a delete request to: localhost:5000/notes/:id
-sending an **Authorization header** in the Bearer TOKEN format.<br><br>
+sending the **note id** as a request param and an **Authorization header** in the Bearer TOKEN format.<br><br>
 
 ## Wi-fi
 
@@ -175,7 +175,7 @@ and an **Authorization header** in the Bearer TOKEN format.<br><br>
 
 #### **GET** - Get wi-fis
 
-In order to get the list of wi-fis, make a get request to: localhost:5000/wifis
+In order to get the list of wi-fi networks, make a get request to: localhost:5000/wifis
 sending an **Authorization header** in the Bearer TOKEN format.<br><br>
 The server will respond with an array in the format:
 
@@ -195,7 +195,7 @@ The server will respond with an array in the format:
 
 #### **GET** - Get wi-fi by id
 
-In order to get a specific wi-fi, make a get request to: localhost:5000/wifis/:id
+In order to get a specific wi-fi network, make a get request to: localhost:5000/wifis/:id
 sending the **wi-fi id** as a request param and an **Authorization header** in the Bearer TOKEN format.<br><br>
 The server will respond with an object in the format:
 
@@ -210,3 +210,8 @@ The server will respond with an object in the format:
 ```
 
 <br>
+
+#### **DELETE** - Delete wi-fi
+
+In order to delete a wi-fi network, make a delete request to: localhost:5000/wifis/:id
+sending the **wi-fi id** as a request param and an **Authorization header** in the Bearer TOKEN format.<br><br>

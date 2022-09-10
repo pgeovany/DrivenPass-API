@@ -39,6 +39,11 @@ async function getWifis(userId: number) {
   return decryptWifiArray(wifi);
 }
 
+async function deleteWifi(id: number, userId: number) {
+  await findByIdOrFail(id, userId);
+  await wifiRepository.remove(id);
+}
+
 async function findByIdOrFail(id: number, userId: number) {
   const wifi = await wifiRepository.findById(id, userId);
 
@@ -67,4 +72,4 @@ function decryptWifiArray(wifis: Wifis[]) {
   });
 }
 
-export { insertWifi, getWifiById, getWifis };
+export { insertWifi, getWifiById, getWifis, deleteWifi };
