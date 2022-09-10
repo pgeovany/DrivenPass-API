@@ -150,3 +150,8 @@ The server will respond with an object in the format:
 ```
 
 <br>
+
+#### **DELETE** - Delete note
+
+In order to delete a note, make a delete request to: localhost:5000/notes/:id
+sending an **Authorization header** in the Bearer TOKEN format.<br><br>

@@ -30,6 +30,11 @@ async function getNotes(req: Request, res: Response) {
 }
 
 async function deleteNote(req: Request, res: Response) {
+  const { id } = req.params;
+  const { id: userId } = res.locals;
+
+  await notesService.deleteNote(Number(id), Number(userId));
+
   res.sendStatus(httpStatus.OK);
 }
 

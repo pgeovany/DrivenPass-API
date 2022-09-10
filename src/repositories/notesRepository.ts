@@ -27,4 +27,8 @@ async function findByUserIdAndTitle(userId: number, title: string) {
   });
 }
 
-export { create, findByUserIdAndTitle, findById, findByUserId };
+async function remove(id: number) {
+  await prisma.notes.delete({ where: { id } });
+}
+
+export { create, findByUserIdAndTitle, findById, findByUserId, remove };

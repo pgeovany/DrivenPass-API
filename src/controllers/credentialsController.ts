@@ -37,6 +37,7 @@ async function deleteCredentials(req: Request, res: Response) {
   const { id: userId } = res.locals;
 
   await credentialService.deleteCredentials(Number(id), Number(userId));
+
   res.sendStatus(httpStatus.OK);
 }
 

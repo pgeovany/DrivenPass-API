@@ -39,6 +39,11 @@ async function getNotes(userId: number) {
   return decryptNotesArray(notes);
 }
 
+async function deleteNote(id: number, userId: number) {
+  await findByIdOrFail(id, userId);
+  await notesRepository.remove(id);
+}
+
 async function findByIdOrFail(id: number, userId: number) {
   const note = await notesRepository.findById(id, userId);
 
@@ -67,4 +72,4 @@ function decryptNotesArray(notes: Notes[]) {
   });
 }
 
-export { insertNote, getNoteById, getNotes };
+export { insertNote, getNoteById, getNotes, deleteNote };
