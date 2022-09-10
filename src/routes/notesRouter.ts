@@ -3,7 +3,7 @@ import tokenMiddleware from '../middlewares/tokenMiddleware';
 import validateSchema from '../middlewares/schemaValidator';
 import {
   saveNote,
-  getNote,
+  getNoteById,
   getNotes,
   deleteNote,
 } from '../controllers/notesController';
@@ -14,7 +14,7 @@ const notesRouter = Router();
 notesRouter.use(tokenMiddleware);
 
 notesRouter.post('/notes', validateSchema(noteSchema), saveNote);
-notesRouter.get('/notes/:id', getNote);
+notesRouter.get('/notes/:id', getNoteById);
 notesRouter.get('/notes', getNotes);
 notesRouter.delete('/notes/:id', deleteNote);
 

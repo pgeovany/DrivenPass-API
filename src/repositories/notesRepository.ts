@@ -8,6 +8,10 @@ async function create(data: NotesInsertData) {
   await prisma.notes.create({ data });
 }
 
+async function findById(id: number, userId: number) {
+  return await prisma.notes.findFirst({ where: { id, userId } });
+}
+
 async function findByUserIdAndTitle(userId: number, title: string) {
   return await prisma.notes.findUnique({
     where: {
@@ -19,4 +23,4 @@ async function findByUserIdAndTitle(userId: number, title: string) {
   });
 }
 
-export { create, findByUserIdAndTitle };
+export { create, findByUserIdAndTitle, findById };

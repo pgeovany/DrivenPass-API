@@ -12,8 +12,13 @@ async function saveNote(req: Request, res: Response) {
   res.sendStatus(httpStatus.CREATED);
 }
 
-async function getNote(req: Request, res: Response) {
-  res.sendStatus(httpStatus.OK);
+async function getNoteById(req: Request, res: Response) {
+  const { id } = req.params;
+  const { id: userId } = res.locals;
+
+  const note = await notesService.getNoteById(Number(id), Number(userId));
+
+  res.status(httpStatus.OK).send(note);
 }
 
 async function getNotes(req: Request, res: Response) {
@@ -24,4 +29,4 @@ async function deleteNote(req: Request, res: Response) {
   res.sendStatus(httpStatus.OK);
 }
 
-export { saveNote, getNote, getNotes, deleteNote };
+export { saveNote, getNoteById, getNotes, deleteNote };
