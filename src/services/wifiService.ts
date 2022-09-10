@@ -29,4 +29,42 @@ function encryptWifi(wifi: wifiRepository.WifiRequestData) {
   };
 }
 
-export { insertWifi };
+async function getWifiById(id: number, userId: number) {
+  const wifi = await findByIdOrFail(id, userId);
+  return decryptWifi(wifi);
+}
+
+async function getWifis(userId: number) {
+  const wifi = await wifiRepository.findByUserId(userId);
+  return decryptWifiArray(wifi);
+}
+
+async function findByIdOrFail(id: number, userId: number) {
+  const wifi = await wifiRepository.findById(id, userId);
+
+  if (!wifi) {
+    throw {
+      type: 'NOT_FOUND',
+      message: 'Wi-fi not found!',
+    };
+  }
+
+  return wifi;
+}
+
+function decryptWifi(wifi: Wifis) {
+  return {
+    ...wifi,
+    password: cryptr.decrypt(wifi.password),
+  };
+}
+
+function decryptWifiArray(wifis: Wifis[]) {
+  return wifis.map((wifi) => {
+    return {
+      ...decryptWifi(wifi),
+    };
+  });
+}
+
+export { insertWifi, getWifiById, getWifis };

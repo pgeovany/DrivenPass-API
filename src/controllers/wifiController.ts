@@ -16,13 +16,17 @@ async function getWifiById(req: Request, res: Response) {
   const { id } = req.params;
   const { userId } = res.locals;
 
-  res.status(httpStatus.OK).send('');
+  const wifi = await wifiService.getWifiById(Number(id), Number(userId));
+
+  res.status(httpStatus.OK).send(wifi);
 }
 
 async function getWifis(req: Request, res: Response) {
   const { userId } = res.locals;
 
-  res.status(httpStatus.OK).send('');
+  const wifis = await wifiService.getWifis(Number(userId));
+
+  res.status(httpStatus.OK).send(wifis);
 }
 
 async function deleteWifi(req: Request, res: Response) {

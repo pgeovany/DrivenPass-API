@@ -172,3 +172,41 @@ sending a body in the format:
 ```
 
 and an **Authorization header** in the Bearer TOKEN format.<br><br>
+
+#### **GET** - Get wi-fis
+
+In order to get the list of wi-fis, make a get request to: localhost:5000/wifis
+sending an **Authorization header** in the Bearer TOKEN format.<br><br>
+The server will respond with an array in the format:
+
+```
+[
+  {
+    id: number,
+    userId: number,
+    title: string,
+    name: string,
+    password: string
+  },
+]
+```
+
+<br>
+
+#### **GET** - Get wi-fi by id
+
+In order to get a specific wi-fi, make a get request to: localhost:5000/wifis/:id
+sending the **wi-fi id** as a request param and an **Authorization header** in the Bearer TOKEN format.<br><br>
+The server will respond with an object in the format:
+
+```
+{
+  id: number,
+  userId: number,
+  title: string,
+  name: string,
+  password: string
+}
+```
+
+<br>
