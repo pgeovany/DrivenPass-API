@@ -12,4 +12,9 @@ const credentialSchema = joi.object({
   password: joi.string().required(),
 });
 
-export { signUpSchema, credentialSchema };
+const noteSchema = joi.object({
+  title: joi.string().required().max(50),
+  note: joi.string().required().max(1000),
+});
+
+export { signUpSchema, credentialSchema, noteSchema };

@@ -7,12 +7,13 @@ import {
   getNotes,
   deleteNote,
 } from '../controllers/notesController';
+import { noteSchema } from '../utils/schemas';
 
 const notesRouter = Router();
 
 notesRouter.use(tokenMiddleware);
 
-notesRouter.post('/notes', saveNote);
+notesRouter.post('/notes', validateSchema(noteSchema), saveNote);
 notesRouter.get('/notes/:id', getNote);
 notesRouter.get('/notes', getNotes);
 notesRouter.delete('/notes/:id', deleteNote);
