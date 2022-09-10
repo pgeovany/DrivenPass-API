@@ -11,6 +11,7 @@ sending a body in the format:
   password: string
 }
 ```
+
 <br>
 
 #### **POST** - Sign in
@@ -32,6 +33,7 @@ The server will respond with an object in the format:
   token: string
 }
 ```
+
 <br>
 
 ## Website credentials
@@ -70,6 +72,7 @@ The server will respond with an array in the format:
   },
 ]
 ```
+
 <br>
 
 #### **GET** - List specific credentials
@@ -88,4 +91,10 @@ The server will respond with an array in the format:
   password: string
 }
 ```
+
 <br>
+
+#### **DELETE** - Delete credentials
+
+In order to delete credentials, make a delete request to: localhost:5000/credentials/:id
+sending an **Authorization header** in the Bearer TOKEN format.<br><br>

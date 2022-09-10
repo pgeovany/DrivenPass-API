@@ -32,4 +32,12 @@ async function getAllCredentials(req: Request, res: Response) {
   res.status(httpStatus.OK).send(credentials);
 }
 
-export { saveCredentials, getCredential, getAllCredentials };
+async function deleteCredentials(req: Request, res: Response) {
+  const { id } = req.params;
+  const { id: userId } = res.locals;
+
+  await credentialService.deleteCredentials(Number(id), Number(userId));
+  res.sendStatus(httpStatus.OK);
+}
+
+export { saveCredentials, getCredential, getAllCredentials, deleteCredentials };

@@ -27,4 +27,8 @@ async function findByUserIdAndTitle(userId: number, title: string) {
   });
 }
 
-export { create, findById, findByUserId, findByUserIdAndTitle };
+async function remove(id: number) {
+  await prisma.credentials.delete({ where: { id } });
+}
+
+export { create, findById, findByUserId, findByUserIdAndTitle, remove };

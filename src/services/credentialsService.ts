@@ -23,7 +23,18 @@ async function insertCredentials(
 }
 
 async function getCredentialsById(id: number, userId: number) {
+  const credentials = await findByIdOrFail(id, userId);
+  return decryptCredentials(credentials);
+}
+
+async function deleteCredentials(id: number, userId: number) {
+  await findByIdOrFail(id, userId);
+  await credentialsRepository.remove(id);
+}
+
+async function findByIdOrFail(id: number, userId: number) {
   const credentials = await credentialsRepository.findById(id, userId);
+
   if (!credentials) {
     throw {
       type: 'NOT_FOUND',
@@ -31,7 +42,7 @@ async function getCredentialsById(id: number, userId: number) {
     };
   }
 
-  return decryptCredentials(credentials);
+  return credentials;
 }
 
 async function getAllCredentials(userId: number) {
@@ -64,4 +75,9 @@ function encryptCredentials(
   };
 }
 
-export { insertCredentials, getCredentialsById, getAllCredentials };
+export {
+  insertCredentials,
+  getCredentialsById,
+  getAllCredentials,
+  deleteCredentials,
+};
