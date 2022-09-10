@@ -17,4 +17,10 @@ const noteSchema = joi.object({
   note: joi.string().required().max(1000),
 });
 
-export { signUpSchema, credentialSchema, noteSchema };
+const wifiSchema = joi.object({
+  title: joi.string().required(),
+  name: joi.string().required().max(50),
+  password: joi.string().required().max(50),
+});
+
+export { signUpSchema, credentialSchema, noteSchema, wifiSchema };
