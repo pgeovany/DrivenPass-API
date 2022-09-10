@@ -4,17 +4,17 @@ import { NotesRequestData } from '../repositories/notesRepository';
 import * as notesService from '../services/notesService';
 
 async function saveNote(req: Request, res: Response) {
-  const { id } = res.locals;
+  const { userId } = res.locals;
   const note: NotesRequestData = req.body;
 
-  await notesService.insertNote(Number(id), note);
+  await notesService.insertNote(Number(userId), note);
 
   res.sendStatus(httpStatus.CREATED);
 }
 
 async function getNoteById(req: Request, res: Response) {
   const { id } = req.params;
-  const { id: userId } = res.locals;
+  const { userId } = res.locals;
 
   const note = await notesService.getNoteById(Number(id), Number(userId));
 
@@ -22,16 +22,16 @@ async function getNoteById(req: Request, res: Response) {
 }
 
 async function getNotes(req: Request, res: Response) {
-  const { id } = res.locals;
+  const { userId } = res.locals;
 
-  const notes = await notesService.getNotes(Number(id));
+  const notes = await notesService.getNotes(Number(userId));
 
   res.status(httpStatus.OK).send(notes);
 }
 
 async function deleteNote(req: Request, res: Response) {
   const { id } = req.params;
-  const { id: userId } = res.locals;
+  const { userId } = res.locals;
 
   await notesService.deleteNote(Number(id), Number(userId));
 

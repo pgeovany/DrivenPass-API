@@ -4,17 +4,17 @@ import * as credentialService from '../services/credentialsService';
 import { CredentialsRequestData } from '../repositories/credentialsRepository';
 
 async function saveCredentials(req: Request, res: Response) {
-  const { id } = res.locals;
+  const { userId } = res.locals;
   const credential: CredentialsRequestData = req.body;
 
-  await credentialService.insertCredentials(Number(id), credential);
+  await credentialService.insertCredentials(Number(userId), credential);
 
   res.sendStatus(httpStatus.CREATED);
 }
 
 async function getCredential(req: Request, res: Response) {
   const { id } = req.params;
-  const { id: userId } = res.locals;
+  const { userId } = res.locals;
 
   const credentials = await credentialService.getCredentialsById(
     Number(id),
@@ -25,7 +25,7 @@ async function getCredential(req: Request, res: Response) {
 }
 
 async function getAllCredentials(req: Request, res: Response) {
-  const { id: userId } = res.locals;
+  const { userId } = res.locals;
 
   const credentials = await credentialService.getAllCredentials(Number(userId));
 
@@ -34,7 +34,7 @@ async function getAllCredentials(req: Request, res: Response) {
 
 async function deleteCredentials(req: Request, res: Response) {
   const { id } = req.params;
-  const { id: userId } = res.locals;
+  const { userId } = res.locals;
 
   await credentialService.deleteCredentials(Number(id), Number(userId));
 

@@ -27,7 +27,7 @@ async function tokenMiddleware(
     }
 
     res.locals = {
-      id: decoded.id,
+      userId: decoded.id,
     };
   });
 
