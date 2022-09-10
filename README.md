@@ -115,6 +115,25 @@ sending a body in the format:
 
 and an **Authorization header** in the Bearer TOKEN format.<br><br>
 
+#### **GET** - Get notes
+
+In order to get the list of notes, make a get request to: localhost:5000/notes
+sending an **Authorization header** in the Bearer TOKEN format.<br><br>
+The server will respond with an array in the format:
+
+```
+[
+  {
+    id: number,
+    userId: number,
+    title: string,
+    note: string
+  },
+]
+```
+
+<br>
+
 #### **GET** - Get note by id
 
 In order to get a specific note, make a get request to: localhost:5000/notes/:id

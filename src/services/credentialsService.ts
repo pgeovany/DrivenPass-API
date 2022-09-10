@@ -50,20 +50,19 @@ async function getAllCredentials(userId: number) {
   return decryptCredentialsArray(credentials);
 }
 
-function decryptCredentialsArray(credentials: Credentials[]) {
-  return credentials.map((credentials) => {
-    return {
-      ...credentials,
-      password: cryptr.decrypt(credentials.password),
-    };
-  });
-}
-
 function decryptCredentials(credentials: Credentials) {
   return {
     ...credentials,
     password: cryptr.decrypt(credentials.password),
   };
+}
+
+function decryptCredentialsArray(credentials: Credentials[]) {
+  return credentials.map((credentials) => {
+    return {
+      ...decryptCredentials(credentials),
+    };
+  });
 }
 
 function encryptCredentials(

@@ -22,7 +22,11 @@ async function getNoteById(req: Request, res: Response) {
 }
 
 async function getNotes(req: Request, res: Response) {
-  res.sendStatus(httpStatus.OK);
+  const { id } = res.locals;
+
+  const notes = await notesService.getNotes(Number(id));
+
+  res.status(httpStatus.OK).send(notes);
 }
 
 async function deleteNote(req: Request, res: Response) {
