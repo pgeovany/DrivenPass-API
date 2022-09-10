@@ -1,3 +1,5 @@
+## Authentication
+
 #### **POST** - Sign up
 
 In order to sign-up, make a post request to: localhost:5000/sign-up
@@ -9,6 +11,7 @@ sending a body in the format:
   password: string
 }
 ```
+<br>
 
 #### **POST** - Sign in
 
@@ -29,6 +32,9 @@ The server will respond with an object in the format:
   token: string
 }
 ```
+<br>
+
+## Website credentials
 
 #### **POST** - Save website credentials
 
@@ -44,7 +50,7 @@ sending a body in the format:
 }
 ```
 
-and an **Authorization header** in the Bearer TOKEN format.
+and an **Authorization header** in the Bearer TOKEN format.<br><br>
 
 #### **GET** - List all credentials of a given user
 
@@ -64,6 +70,7 @@ The server will respond with an array in the format:
   },
 ]
 ```
+<br>
 
 #### **GET** - List specific credentials
 
@@ -81,3 +88,4 @@ The server will respond with an array in the format:
   password: string
 }
 ```
+<br>
