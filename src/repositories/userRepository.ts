@@ -3,8 +3,8 @@ import { User } from '@prisma/client';
 
 export type UserInsertData = Omit<User, 'id'>;
 
-async function create(userData: UserInsertData) {
-  await prisma.user.create({ data: userData });
+async function create(data: UserInsertData) {
+  await prisma.user.create({ data });
 }
 
 async function findByEmail(email: string) {

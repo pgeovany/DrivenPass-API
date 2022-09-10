@@ -29,3 +29,19 @@ The server will respond with an object in the format:
   token: string
 }
 ```
+
+#### **POST** - Save website credentials
+
+In order to save new credentials, make a post request to: localhost:5000/credentials
+sending a body in the format:
+
+```
+{
+  title: string,
+  url: string,
+  username: string,
+  password: string
+}
+```
+
+and an **Authorization header** in the Bearer TOKEN format.
