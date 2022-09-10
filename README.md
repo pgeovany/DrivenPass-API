@@ -75,11 +75,11 @@ The server will respond with an array in the format:
 
 <br>
 
-#### **GET** - List specific credentials
+#### **GET** - Get credentials by id
 
 In order to get a specific cretential, make a get request to: localhost:5000/credentials/:id
 sending the **credential id** as a request param and an **Authorization header** in the Bearer TOKEN format.<br><br>
-The server will respond with an array in the format:
+The server will respond with an object in the format:
 
 ```
 {
@@ -98,3 +98,36 @@ The server will respond with an array in the format:
 
 In order to delete credentials, make a delete request to: localhost:5000/credentials/:id
 sending an **Authorization header** in the Bearer TOKEN format.<br><br>
+
+## Notes
+
+#### **POST** - Save note
+
+In order to save a note, make a post request to: localhost:5000/notes
+sending a body in the format:
+
+```
+{
+  title: string,
+  note: string
+}
+```
+
+and an **Authorization header** in the Bearer TOKEN format.<br><br>
+
+#### **GET** - Get note by id
+
+In order to get a specific note, make a get request to: localhost:5000/notes/:id
+sending the **note id** as a request param and an **Authorization header** in the Bearer TOKEN format.<br><br>
+The server will respond with an object in the format:
+
+```
+{
+  id: number,
+  userId: number,
+  title: string,
+  note: string
+}
+```
+
+<br>
