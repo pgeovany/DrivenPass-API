@@ -237,3 +237,51 @@ sending a body in the format:
 ```
 
 and an **Authorization header** in the Bearer TOKEN format.<br><br>
+
+#### **GET** - Get cards
+
+In order to get the cards list, make a get request to: https://dr1venpass.herokuapp.com/cards
+sending an **Authorization header** in the Bearer TOKEN format.<br><br>
+The server will respond with an array in the format:
+
+```
+[
+  {
+    id: number,
+    userId: number,
+    title: string,
+    number: string,
+    cardholderName: string,
+    securityCode: string,
+    expirationDate: string,
+    password: string
+    type: string,
+    isVirtual: boolean,
+  },
+]
+```
+
+<br>
+
+#### **GET** - Get card by id
+
+In order to get a specific card, make a get request to: https://dr1venpass.herokuapp.com/cards/:id
+sending the **card id** as a request param and an **Authorization header** in the Bearer TOKEN format.<br><br>
+The server will respond with an object in the format:
+
+```
+{
+  id: number,
+  userId: number,
+  title: string,
+  number: string,
+  cardholderName: string,
+  securityCode: string,
+  expirationDate: string,
+  password: string
+  type: string,
+  isVirtual: boolean,
+}
+```
+
+<br>

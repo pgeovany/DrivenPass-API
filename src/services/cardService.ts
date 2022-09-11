@@ -30,4 +30,43 @@ function encryptCard(card: cardRepository.CardsRequestData) {
   };
 }
 
-export { insertCard };
+async function getCardById(id: number, userId: number) {
+  const card = await findByIdOrFail(id, userId);
+  return decryptCard(card);
+}
+
+async function getCards(id: number) {
+  const cards = await cardRepository.findByUserId(id);
+  return decryptCardsArray(cards);
+}
+
+async function findByIdOrFail(id: number, userId: number) {
+  const card = await cardRepository.findById(id, userId);
+
+  if (!card) {
+    throw {
+      type: 'NOT_FOUND',
+      message: 'Card not found!',
+    };
+  }
+
+  return card;
+}
+
+function decryptCard(card: Cards) {
+  return {
+    ...card,
+    securityCode: cryptr.decrypt(card.securityCode),
+    password: cryptr.decrypt(card.password),
+  };
+}
+
+function decryptCardsArray(cards: Cards[]) {
+  return cards.map((card) => {
+    return {
+      ...decryptCard(card),
+    };
+  });
+}
+
+export { insertCard, getCardById, getCards };
