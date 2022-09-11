@@ -18,8 +18,8 @@ async function insertWifi(
     };
   }
 
-  const encryptedNote = encryptWifi(wifi);
-  await wifiRepository.create({ ...encryptedNote, userId });
+  const encryptedWifi = encryptWifi(wifi);
+  await wifiRepository.create({ ...encryptedWifi, userId });
 }
 
 function encryptWifi(wifi: wifiRepository.WifiRequestData) {

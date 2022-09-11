@@ -215,3 +215,25 @@ The server will respond with an object in the format:
 
 In order to delete a wi-fi network, make a delete request to: https://dr1venpass.herokuapp.com/wifis/:id
 sending the **wi-fi id** as a request param and an **Authorization header** in the Bearer TOKEN format.<br><br>
+
+## Cards
+
+#### **POST** - Save card
+
+In order to save a card, make a post request to: https://dr1venpass.herokuapp.com/cards
+sending a body in the format:
+
+```
+{
+  title: string,
+  number: string,
+  cardholderName: string,
+  securityCode: string,
+  expirationDate: string ('MM/YY'),
+  password: string
+  type: string ('credit', 'debit', or 'credit/debit'),
+  isVirtual: boolean,
+}
+```
+
+and an **Authorization header** in the Bearer TOKEN format.<br><br>
