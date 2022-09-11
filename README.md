@@ -285,3 +285,8 @@ The server will respond with an object in the format:
 ```
 
 <br>
+
+#### **DELETE** - Delete card
+
+In order to delete a card, make a delete request to: https://dr1venpass.herokuapp.com/cards/:id
+sending the **card id** as a request param and an **Authorization header** in the Bearer TOKEN format.<br><br>

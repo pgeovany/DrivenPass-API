@@ -33,6 +33,8 @@ async function deleteCard(req: Request, res: Response) {
   const { id } = req.params;
   const { userId } = res.locals;
 
+  await cardService.deleteCard(Number(id), Number(userId));
+
   res.sendStatus(httpStatus.OK);
 }
 

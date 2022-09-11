@@ -40,6 +40,11 @@ async function getCards(id: number) {
   return decryptCardsArray(cards);
 }
 
+async function deleteCard(id: number, userId: number) {
+  await findByIdOrFail(id, userId);
+  await cardRepository.remove(id);
+}
+
 async function findByIdOrFail(id: number, userId: number) {
   const card = await cardRepository.findById(id, userId);
 
@@ -69,4 +74,4 @@ function decryptCardsArray(cards: Cards[]) {
   });
 }
 
-export { insertCard, getCardById, getCards };
+export { insertCard, getCardById, getCards, deleteCard };
