@@ -1,7 +1,7 @@
 {
   "client": "Thunder Client",
   "collectionName": "DrivenPass",
-  "dateExported": "2022-09-11T16:06:31.491Z",
+  "dateExported": "2022-09-12T20:06:42.428Z",
   "version": "1.1",
   "folders": [
     {
@@ -50,12 +50,12 @@
       "method": "POST",
       "sortNum": 10000,
       "created": "2022-09-08T20:31:21.724Z",
-      "modified": "2022-09-11T16:04:17.132Z",
+      "modified": "2022-09-12T20:06:23.509Z",
       "headers": [],
       "params": [],
       "body": {
         "type": "json",
-        "raw": "{\n  \"email\": \"test@gmail.com\",\n  \"password\": \"123\"\n}",
+        "raw": "{\n  \"email\": \"test@gmail.com\",\n  \"password\": \"Abc@1234\"\n}",
         "form": []
       },
       "tests": []
